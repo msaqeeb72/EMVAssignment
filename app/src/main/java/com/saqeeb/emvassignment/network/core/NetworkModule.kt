@@ -1,6 +1,7 @@
 package com.saqeeb.emvassignment.network.core
 
 import com.saqeeb.emvassignment.network.api.UsersAPI
+import com.saqeeb.emvassignment.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit.Builder {
-        return Retrofit.Builder().baseUrl("https://reqres.in")
+        return Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
     }
 
