@@ -16,4 +16,13 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/card_lottie" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lottieAnimationPlane"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_20ssp"
+        android:text="TLV Assignment" />
+
 </RelativeLayout>

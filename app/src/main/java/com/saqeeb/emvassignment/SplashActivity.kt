@@ -2,7 +2,6 @@ package com.saqeeb.emvassignment
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.saqeeb.emvassignment.models.UserResponse
@@ -11,7 +10,13 @@ import com.saqeeb.emvassignment.utils.SharedPref
 import com.saqeeb.emvassignment.utils.Utils
 import com.saqeeb.emvassignment.viewmodels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
@@ -24,7 +29,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         setUpObservers()
-        splashViewModel.getUser("3")
+        val randomNumber = Random.nextInt(1..12)
+        splashViewModel.getUser("$randomNumber")
 
     }
 
@@ -52,6 +58,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goForNextScreen() {
-        startActivity(Intent(this,HomeActivity::class.java))
+        CoroutineScope(Dispatchers.Main).launch{
+            delay(3000)
+            startActivity(Intent(this@SplashActivity,HomeActivity::class.java))
+            finish()
+        }
     }
 }
