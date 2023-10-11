@@ -39,12 +39,12 @@ class SplashActivity : AppCompatActivity() {
             when(it){
                 is NetworkResult.Error -> {
                     Utils.showToast(this@SplashActivity,it.message!!)
-                    saveDataToPref(it.data)
                 }
                 is NetworkResult.Loading -> {
                     Utils.showToast(this@SplashActivity,"Loading")
                 }
                 is NetworkResult.Success -> {
+                    saveDataToPref(it.data)
                     goForNextScreen()
                 }
             }

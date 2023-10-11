@@ -8,6 +8,7 @@
 
 
     <include
+        android:id="@+id/smartCard"
         layout="@layout/smart_card_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,5 +16,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputTlv"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin= "@dimen/_10sdp"
+        android:layout_weight="1"
+        android:hint="TLV String"
+        android:outlineProvider="none"
+        android:padding="@dimen/_2sdp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/smartCard"
+        tools:layout_editor_absoluteX="13dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputTlvData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
