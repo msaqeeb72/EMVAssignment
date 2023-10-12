@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.saqeeb.emvassignment.models.UserResponse
 import com.saqeeb.emvassignment.utils.NetworkResult
 import com.saqeeb.emvassignment.utils.SharedPref
@@ -14,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -45,9 +48,17 @@ class SplashActivity : AppCompatActivity() {
                 }
                 is NetworkResult.Success -> {
                     saveDataToPref(it.data)
-                    goForNextScreen()
+                    saveTagsInfoToDb()
+
                 }
             }
+        }
+    }
+
+    private fun saveTagsInfoToDb() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val isSuccess = splashViewModel.saveTagInfoToRoom(getTagInfoData())
+            goForNextScreen(isSuccess)
         }
     }
 
@@ -57,11 +68,24 @@ class SplashActivity : AppCompatActivity() {
         pref.putString("image","${data?.data?.avatar}")
     }
 
-    private fun goForNextScreen() {
+    private fun goForNextScreen(isSuccess: Boolean) {
         CoroutineScope(Dispatchers.Main).launch{
-            delay(3000)
+            delay(if (isSuccess) 1000 else 3000)
             startActivity(Intent(this@SplashActivity,HomeActivity::class.java))
             finish()
         }
     }
+    private fun getTagInfoData(): Map<String, String>? {
+        var data:Map<String, String>? = null
+        try {
+            val json = Utils.readJsonFromAssets(this, "tags_data.json")
+            val type = object : TypeToken<Map<String, Any>>() {}.type
+            data = Gson().fromJson(json,type)
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return data
+    }
+
 }

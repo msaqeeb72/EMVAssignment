@@ -4,4 +4,4 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tag_info")
-data class TagInfo(@PrimaryKey val tagId :String,val description:String)
+data class TagInfo(@PrimaryKey var tag:String, var description:String)

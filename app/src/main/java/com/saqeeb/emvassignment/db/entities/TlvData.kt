@@ -4,8 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tlv_data")
-data class TlvData(
-    @PrimaryKey private val tag:String?,private val dataLength:String,private val data:String?,
-){
+data class TlvData(@PrimaryKey var tag:String, var dataLength:String, var data:String)
+{
     fun intLength():Int = dataLength.toInt(16)
 }

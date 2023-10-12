@@ -7,6 +7,7 @@ import com.saqeeb.emvassignment.models.UserResponse
 import com.saqeeb.emvassignment.repos.SplashRepo
 import com.saqeeb.emvassignment.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +19,14 @@ class SplashViewModel @Inject constructor(private val splashRepo:SplashRepo) : V
         viewModelScope.launch{
             splashRepo.getUser(userId)
         }
+
+    }
+
+    suspend fun saveTagInfoToRoom(tagInfoData: Map<String, String>?):Boolean {
+
+        return viewModelScope.async {
+            splashRepo.saveDataTagInfoToDb(tagInfoData)
+        }.await()
 
     }
 }

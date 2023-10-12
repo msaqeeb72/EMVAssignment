@@ -11,6 +11,8 @@ interface TagInfoDao {
 
     @Query("SELECT * FROM tag_info")
     suspend fun getAllTags(): List<TagInfo>
-    @Query("SELECT * FROM tag_info where tagId=:tag")
+    @Query("SELECT * FROM tag_info where tag=:tag")
     suspend fun getTagInfo(tag:String): TagInfo
+    @Query("SELECT COUNT(*) FROM tag_info")
+    suspend fun getRowCount(): Int
 }
