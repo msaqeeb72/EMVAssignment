@@ -45,6 +45,8 @@ class TlvFragment : Fragment() {
         Glide.with(this)
             .load(prefs.getString("image"))
             .into(binding.smartCard.profileImage)
+
+
         return binding.root
     }
 

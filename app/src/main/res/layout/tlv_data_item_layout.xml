@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_5sdp"
+    >
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:background="@color/dark"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Header Row -->
+        <TableRow>
+
+            <TextView
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:padding="8dp"
+                android:text="Tag"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tagIdText"
+                    android:background="@color/light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9F02"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/tagDescriptionText"
+                    android:background="@color/light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount, Authorised" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="Length"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tagLengthText"
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="2" />
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:padding="8dp"
+                android:text="Data"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tagDataText"
+                android:layout_margin="0.5dp"
+                android:background="@color/light"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="1234" />
+        </TableRow>
+
+        <!-- Add more rows as needed for displaying EMV tag information -->
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

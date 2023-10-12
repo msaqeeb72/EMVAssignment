@@ -19,16 +19,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputTlv"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin= "@dimen/_10sdp"
         android:layout_weight="1"
         android:hint="TLV String"
-        android:outlineProvider="none"
         android:padding="@dimen/_2sdp"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintTop_toBottomOf="@+id/smartCard"
         tools:layout_editor_absoluteX="13dp">
 
@@ -36,8 +33,37 @@
             android:id="@+id/inputTlvData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:editable="false" />
+            android:lines="4"
+            />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/inputTlv">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bookmarkButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:drawableStart="@drawable/bookmark_outline_24"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Bookmark"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/parseButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:drawableStart="@drawable/add_card_24"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Parse"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.saqeeb.emvassignment.network.core
+package com.saqeeb.emvassignment.di
 
 import com.saqeeb.emvassignment.network.api.UsersAPI
 import com.saqeeb.emvassignment.utils.Constants
