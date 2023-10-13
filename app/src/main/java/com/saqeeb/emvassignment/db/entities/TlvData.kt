@@ -7,4 +7,7 @@ import androidx.room.PrimaryKey
 data class TlvData(@PrimaryKey var tag:String, var dataLength:String, var data:String)
 {
     fun intLength():Int = dataLength.toInt(16)
+    override fun toString(): String {
+        return "$tag$dataLength$data"
+    }
 }

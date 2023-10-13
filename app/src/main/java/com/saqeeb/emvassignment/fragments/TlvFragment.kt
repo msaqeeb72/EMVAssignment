@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.saqeeb.emvassignment.databinding.FragmentTlvBinding
 import com.saqeeb.emvassignment.utils.SharedPref
+import com.saqeeb.emvassignment.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -47,7 +48,18 @@ class TlvFragment : Fragment() {
             .into(binding.smartCard.profileImage)
 
 
+        bindListeners(binding)
         return binding.root
+    }
+
+    private fun bindListeners(binding: FragmentTlvBinding) {
+        binding.parseButton.setOnClickListener {
+            if(binding.inputTlvData.text?.length!! <=4){
+                Utils.showToast(requireActivity(),"Please Enter TLV Data")
+                return@setOnClickListener
+            }
+
+        }
     }
 
     companion object {
