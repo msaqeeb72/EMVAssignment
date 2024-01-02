@@ -10,7 +10,7 @@ object TlvUtils {
             while (true){
                 val tlvData = decodeTlv(remainingString.toString())
                 if(tlvData.tag == "6F"){
-                    remainingString.setValue(tlvData.data)
+                    //remainingString.setValue(tlvData.data)
                 }else{
                     remainingString.setValue(remainingString.toString().replaceFirst(tlvData.toString(),""))
                 }

@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import com.saqeeb.emvassignment.db.AppDatabase
 import com.saqeeb.emvassignment.db.dao.TagInfoDao
-import com.saqeeb.emvassignment.db.dao.TlvDataDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,10 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
-    @Provides
-    fun provideTlvDao(appDatabase: AppDatabase): TlvDataDao {
-        return appDatabase.tlvDataDao()
-    }
+
     @Provides
     fun provideTagDao(appDatabase: AppDatabase): TagInfoDao {
         return appDatabase.tagInfoDao()

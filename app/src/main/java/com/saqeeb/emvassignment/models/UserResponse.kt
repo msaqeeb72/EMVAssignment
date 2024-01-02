@@ -1,6 +1,6 @@
 package com.saqeeb.emvassignment.models
 
-data class UserResponse(
+data class OUserResponse(
     val `data`: Data,
     val support: Support
 )
